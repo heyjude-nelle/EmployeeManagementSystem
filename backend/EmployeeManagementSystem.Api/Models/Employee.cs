@@ -6,6 +6,6 @@ public class Employee
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public Department? Department { get; set; } = null;
+    public Department? Department { get; set; }
     public EmploymentStatus EmploymentStatus { get; set; } = EmploymentStatus.Onboarding;
 }
