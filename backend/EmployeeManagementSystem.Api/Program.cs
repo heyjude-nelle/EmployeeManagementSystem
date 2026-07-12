@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Api.Data;
+using EmployeeManagementSystem.Api.Services;
 using System.Text.Json.Serialization;
 
 
@@ -18,6 +19,8 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false));
     });
 
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,4 +33,4 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
