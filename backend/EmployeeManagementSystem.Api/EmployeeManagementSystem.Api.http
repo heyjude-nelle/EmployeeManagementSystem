@@ -1,1 +1,39 @@
-@EmployeeManagementSystem.Api_HostAddress = http://localhost:5178
+@HostAddress = http://localhost:5178
+
+GET {{HostAddress}}/api/employees
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/employees/1
+Accept: application/json
+
+###
+
+POST {{HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane.doe@example.com",
+  "department": null,
+  "employmentStatus": "Active"
+}
+
+###
+
+PUT {{HostAddress}}/api/employees/1
+Content-Type: application/json
+
+{
+  "firstName": "Johnny",
+  "lastName": "Doe",
+  "email": "johnny.doe@example.com",
+  "department": "HumanResources",
+  "employmentStatus": "Active"
+}
+
+###
+
+DELETE {{HostAddress}}/api/employees/1
