@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Api.Data;
+using EmployeeManagementSystem.Api.Services;
 using System.Text.Json.Serialization;
 
 
@@ -17,6 +18,8 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false));
     });
+
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 
