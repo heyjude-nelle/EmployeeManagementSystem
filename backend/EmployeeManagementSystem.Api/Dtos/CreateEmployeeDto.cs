@@ -16,7 +16,7 @@ public class CreateEmployeeDto
     [Required]
     [EmailAddress]
     public string Email { get; set; } = string.Empty;
-    
+
     [EnumDataType(typeof(Department))]
     public Department? Department { get; set; }
 
