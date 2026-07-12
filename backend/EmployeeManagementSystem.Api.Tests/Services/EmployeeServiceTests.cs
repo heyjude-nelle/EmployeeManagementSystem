@@ -3,7 +3,7 @@ using EmployeeManagementSystem.Api.Dtos;
 using EmployeeManagementSystem.Api.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeManagementSystem.Api.Tests;
+namespace EmployeeManagementSystem.Api.Tests.Services;
 
 public class EmployeeServiceTests
 {

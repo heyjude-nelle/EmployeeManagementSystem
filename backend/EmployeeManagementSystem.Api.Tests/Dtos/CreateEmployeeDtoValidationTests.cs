@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using EmployeeManagementSystem.Api.Dtos;
 
-namespace EmployeeManagementSystem.Api.Tests;
+namespace EmployeeManagementSystem.Api.Tests.Dtos;
 
 public class CreateEmployeeDtoValidationTests
 {
