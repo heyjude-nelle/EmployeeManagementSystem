@@ -1,8 +1,10 @@
 namespace EmployeeManagementSystem.Api.Models
 {
     public enum EmploymentStatus
-    {   Onboarding,
+    {
+        Hired,
         Active,
+        Benched,
         OnLeave,
         Terminated
     }
