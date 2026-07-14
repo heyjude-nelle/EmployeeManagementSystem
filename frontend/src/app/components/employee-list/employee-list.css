@@ -96,6 +96,11 @@
   color: #ffffff;
 }
 
+.table-container {
+  max-height: 70vh;
+  overflow: auto;
+}
+
 .employee-list-table {
   width: 100%;
   border-collapse: collapse;

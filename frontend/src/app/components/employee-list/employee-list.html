@@ -18,26 +18,28 @@
     </div>
   </header>
 
-  <table class="employee-list-table">
-    <thead class="employee-table-header">
-      <tr>
-        @for (col of displayColumns; track $index) {
-          <th [class]="col.cssClass ?? ''" scope="col">{{ col.label }}</th>
-        }
-        <th class="actions-col" scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody class="employee-table-body">
-      @for (employee of filteredEmployees(); track employee.id) {
+  <div class="table-container">
+    <table class="employee-list-table">
+      <thead class="employee-table-header">
         <tr>
           @for (col of displayColumns; track $index) {
-            <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
+            <th [class]="col.cssClass ?? ''" scope="col">{{ col.label }}</th>
           }
-          <td class="actions-col">
-            <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
-          </td>
+          <th class="actions-col" scope="col">Action</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody class="employee-table-body">
+        @for (employee of filteredEmployees(); track employee.id) {
+          <tr>
+            @for (col of displayColumns; track $index) {
+              <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
+            }
+            <td class="actions-col">
+              <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </main>
