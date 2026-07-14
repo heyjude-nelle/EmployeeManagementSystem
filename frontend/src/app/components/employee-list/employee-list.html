@@ -1,0 +1,43 @@
+<main class="employee-list-page">
+  <header class="employee-list-header">
+    <h1 class="employee-list-title">Employee List</h1>
+    <div class="employee-list-actions">
+      <div class="search-container">
+        <label for="searchName">Search</label>
+        <input
+          id="searchName"
+          type="search"
+          placeholder="Search by name"
+          [value]="searchTerm()"
+          (input)="searchTerm.set($any($event.target).value)"
+        />
+      </div>
+      <div class="button-container">
+        <a class="add-button" [routerLink]="['/employees', 'new']">+ Add employee</a>
+      </div>
+    </div>
+  </header>
+
+  <table class="employee-list-table">
+    <thead class="employee-table-header">
+      <tr>
+        @for (col of displayColumns; track $index) {
+          <th [class]="col.cssClass ?? ''" scope="col">{{ col.label }}</th>
+        }
+        <th class="actions-col" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="employee-table-body">
+      @for (employee of filteredEmployees(); track employee.id) {
+        <tr>
+          @for (col of displayColumns; track $index) {
+            <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
+          }
+          <td class="actions-col">
+            <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</main>
