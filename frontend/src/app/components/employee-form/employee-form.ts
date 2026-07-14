@@ -6,10 +6,10 @@ import {
   CreateEmployee,
   Department,
   Employee,
+  EmployeeFormField,
   EmploymentStatus,
-} from '../../models/employee.service.model';
-
-type EmployeeFormField = 'firstName' | 'lastName' | 'email' | 'department' | 'employmentStatus';
+} from '../../models/employee.model';
+import { DEPARTMENTS, EMPLOYMENT_STATUSES } from '../../models/employee-constants';
 
 @Component({
   selector: 'app-employee-form',
@@ -28,25 +28,9 @@ export class EmployeeForm implements OnInit {
 
   private employeeId: number | null = null;
 
-  protected readonly departments: Department[] = [
-    'Accounting',
-    'Engineering',
-    'HumanResources',
-    'Legal',
-    'Management',
-    'Marketing',
-    'Operations',
-    'Sales',
-    'Support',
-  ];
+  protected readonly departments = DEPARTMENTS;
 
-  protected readonly employmentStatuses: EmploymentStatus[] = [
-    'Hired',
-    'Active',
-    'Benched',
-    'OnLeave',
-    'Terminated',
-  ];
+  protected readonly employmentStatuses = EMPLOYMENT_STATUSES;
 
   protected readonly employeeForm = this.formBuilder.nonNullable.group({
     firstName: ['', [Validators.required, Validators.maxLength(100)]],
