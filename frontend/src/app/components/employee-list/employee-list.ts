@@ -51,6 +51,11 @@ export class EmployeeList implements OnInit {
   });
 
   ngOnInit(): void {
-    this.employeeService.getAllEmployee().subscribe((data) => this.employees.set(data));
+    this.employeeService.getAllEmployee().subscribe({
+      next: (data) => this.employees.set(data),
+      error: (error) => {
+        throw error;
+      },
+    });
   }
 }
