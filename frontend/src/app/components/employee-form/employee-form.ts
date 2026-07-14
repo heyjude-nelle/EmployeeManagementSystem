@@ -66,12 +66,7 @@ export class EmployeeForm implements OnInit {
     }
 
     this.employeeId = Number(id);
-    this.isEditMode.set(true);
-    this.pageTitle.set('Edit Employee');
-
-    this.employeeService
-      .getEmployeeById(this.employeeId)
-      .subscribe((employee) => this.employeeForm.patchValue(this.toFormValue(employee)));
+    this.openEditPage(this.employeeId);
   }
 
   protected formatOptionLabel(value: string): string {
@@ -91,6 +86,15 @@ export class EmployeeForm implements OnInit {
       department: employee.department,
       employmentStatus: employee.employmentStatus,
     };
+  }
+
+  protected openEditPage(id: number): void {
+    this.isEditMode.set(true);
+    this.pageTitle.set('Edit Employee');
+
+    this.employeeService
+      .getEmployeeById(id)
+      .subscribe((employee) => this.employeeForm.patchValue(this.toFormValue(employee)));
   }
 
   protected submit(): void {
