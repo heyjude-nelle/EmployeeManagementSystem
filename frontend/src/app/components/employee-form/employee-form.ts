@@ -76,9 +76,12 @@ export class EmployeeForm implements OnInit {
     this.isEditMode.set(true);
     this.pageTitle.set('Edit Employee');
 
-    this.employeeService
-      .getEmployeeById(id)
-      .subscribe((employee) => this.employeeForm.patchValue(this.toFormValue(employee)));
+    this.employeeService.getEmployeeById(id).subscribe({
+      next: (employee) => this.employeeForm.patchValue(this.toFormValue(employee)),
+      error: (error) => {
+        throw error;
+      },
+    });
   }
 
   protected submit(): void {
@@ -93,14 +96,20 @@ export class EmployeeForm implements OnInit {
     if (this.isEditMode() && this.employeeId) {
       this.employeeService.updateEmployee(this.employeeId, employee).subscribe({
         next: () => this.router.navigate(['/employees']),
-        error: () => this.isSubmitting.set(false),
+        error: (error) => {
+          this.isSubmitting.set(false);
+          throw error;
+        },
       });
       return;
     }
 
     this.employeeService.createEmployee(employee).subscribe({
       next: () => this.router.navigate(['/employees']),
-      error: () => this.isSubmitting.set(false),
+      error: (error) => {
+        this.isSubmitting.set(false);
+        throw error;
+      },
     });
   }
 }
