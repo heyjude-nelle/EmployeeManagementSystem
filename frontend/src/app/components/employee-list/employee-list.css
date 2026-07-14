@@ -1,0 +1,154 @@
+.employee-list-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.employee-list-header {
+  margin-bottom: 16px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e1e5ea;
+  border-top: 3px solid #002961;
+  border-radius: 6px;
+}
+
+.employee-list-title {
+  margin: 0;
+  color: #002961;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.employee-list-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-container label {
+  font-size: 13px;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.search-container input {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  min-width: 260px;
+  font-size: 14px;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: #002961;
+  box-shadow: 0 0 0 3px rgba(0, 41, 97, 0.12);
+}
+
+.add-button {
+  height: 38px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 28px;
+  background: #dc6d1e;
+  border: 1px solid #dc6d1e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.add-button:hover {
+  background: #c65c05;
+  border-color: #c65c05;
+}
+
+.edit-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 20px;
+  background: transparent;
+  border: 1px solid #dc6d1e;
+  color: #c65c05;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.edit-button:hover {
+  background: #dc6d1e;
+  color: #ffffff;
+}
+
+.table-container {
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.employee-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.employee-list-table th,
+.employee-list-table td {
+  text-align: left;
+  padding: 8px;
+}
+
+.employee-list-table th {
+  color: #555;
+  font-weight: 500;
+}
+
+.employee-table-body tr {
+  border-bottom: 1px solid #e6e8eb;
+}
+
+.name-col {
+  width: 22%;
+}
+
+.email-col {
+  width: 30%;
+}
+
+.department-col {
+  width: 18%;
+  white-space: nowrap;
+}
+
+.status-col {
+  width: 12%;
+  white-space: nowrap;
+}
+
+.actions-col {
+  width: 10%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+td.name-col,
+td.email-col {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
