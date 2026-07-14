@@ -1,12 +1,15 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
-import { Employee } from '../../models/employee.model';
+import { Employee, EmployeeColumn } from '../../models/employee.model';
 import { RouterLink } from '@angular/router';
 
-type EmployeeColumn = {
-  label: string;
-  cssClass?: string;
-  value: (employee: Employee) => string | null;
+const formatStatus = (status: string): string => {
+  return status === 'OnLeave' ? 'On Leave' : status;
+};
+
+const formatDepartment = (department: string | null): string => {
+  if (!department) return 'Not Assigned';
+  return department.replace(/([a-z])([A-Z])/g, '$1 $2');
 };
 
 @Component({
@@ -31,12 +34,12 @@ export class EmployeeList implements OnInit {
     {
       label: 'Department',
       cssClass: 'department-col',
-      value: (employee: Employee) => employee.department,
+      value: (employee: Employee) => formatDepartment(employee.department),
     },
     {
       label: 'Status',
       cssClass: 'status-col',
-      value: (employee: Employee) => employee.employmentStatus,
+      value: (employee: Employee) => formatStatus(employee.employmentStatus),
     },
   ];
 
