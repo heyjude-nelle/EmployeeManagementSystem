@@ -1,6 +1,0 @@
-<Solution>
-  <Folder Name="/backend/">
-    <Project Path="backend/EmployeeManagementSystem.Api.Tests/EmployeeManagementSystem.Api.Tests.csproj" />
-    <Project Path="backend/EmployeeManagementSystem.Api/EmployeeManagementSystem.Api.csproj" />
-  </Folder>
-</Solution>
