@@ -1,5 +1,5 @@
 .employee-list-page {
-  max-width: 1280px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -114,8 +114,8 @@
 }
 
 .employee-list-table th {
-  color: #555;
-  font-weight: 500;
+  color: #002961;
+  font-weight: 700;
 }
 
 .employee-table-body tr {
