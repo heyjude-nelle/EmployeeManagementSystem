@@ -1,0 +1,63 @@
+<main class="employee-form-page">
+  <header class="employee-form-header">
+    <h1 class="employee-form-title">{{ pageTitle() }}</h1>
+    <a class="back-link" [routerLink]="['/employees']">Back to list</a>
+  </header>
+
+  <form class="employee-form" [formGroup]="employeeForm" (ngSubmit)="submit()">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="firstName">First name</label>
+        <input id="firstName" type="text" formControlName="firstName" />
+        @if (hasFieldError('firstName', 'required')) {
+          <p class="field-error">First name is required.</p>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="lastName">Last name</label>
+        <input id="lastName" type="text" formControlName="lastName" />
+        @if (hasFieldError('lastName', 'required')) {
+          <p class="field-error">Last name is required.</p>
+        }
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      @if (hasFieldError('email', 'required')) {
+        <p class="field-error">Email is required.</p>
+      }
+      @if (hasFieldError('email', 'email')) {
+        <p class="field-error">Enter a valid email address.</p>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="department">Department</label>
+        <select id="department" formControlName="department">
+          <option [ngValue]="null">Not Assigned</option>
+          @for (department of departments; track department) {
+            <option [ngValue]="department">{{ formatOptionLabel(department) }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="employmentStatus">Status</label>
+        <select id="employmentStatus" formControlName="employmentStatus">
+          @for (status of employmentStatuses; track status) {
+            <option [ngValue]="status">{{ formatOptionLabel(status) }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a class="cancel-button" [routerLink]="['/employees']">Cancel</a>
+      <button class="save-button" type="submit" [disabled]="isSubmitting()">Submit</button>
+    </div>
+  </form>
+</main>

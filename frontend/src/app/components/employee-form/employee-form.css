@@ -1,0 +1,138 @@
+.employee-form-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.employee-form-header {
+  margin-bottom: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e1e5ea;
+  border-top: 3px solid #002961;
+  border-radius: 6px;
+}
+
+.employee-form-title {
+  margin: 0;
+  color: #002961;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.back-link,
+.cancel-button {
+  color: #c65c05;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-link:hover,
+.cancel-button:hover {
+  text-decoration: underline;
+}
+
+.employee-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e1e5ea;
+  border-radius: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: #002961;
+  box-shadow: 0 0 0 3px rgba(0, 41, 97, 0.12);
+}
+
+.field-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.save-button {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 28px;
+  background: #dc6d1e;
+  border: 1px solid #dc6d1e;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background: #c65c05;
+  border-color: #c65c05;
+}
+
+.save-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .employee-form-page {
+    padding: 16px;
+  }
+
+  .employee-form-header,
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .save-button {
+    width: 100%;
+  }
+}
