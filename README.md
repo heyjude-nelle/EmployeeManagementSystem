@@ -16,6 +16,7 @@ The application is split into two independently runnable projects:
 - Create a new employee button in header
 - Edit an existing employee button per row
 - Saving the form routes back to the employee list
+- Submit button stays disabled until the form is valid and has unsaved changes
 - Empty state with distinct messages for "no employees yet" and "failed to load"
 - Client-side and server-side validation
 - Swagger UI for exploring the API
