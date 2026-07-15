@@ -37,4 +37,28 @@ describe('EmployeeForm', () => {
     expect(component['hasFieldError']('lastName', 'required')).toBe(true);
     expect(component['hasFieldError']('email', 'required')).toBe(true);
   });
+
+  it('should keep submit disabled until the form has unsaved changes', () => {
+    const form = component['employeeForm'];
+    const submitButton = (): HTMLButtonElement =>
+      (fixture.nativeElement as HTMLElement).querySelector('.save-button')!;
+
+    // programmatic setValue leaves the form pristine, like a loaded employee
+    form.setValue({
+      firstName: 'Jane',
+      lastName: 'Doe',
+      email: 'jane.doe@example.com',
+      department: null,
+      employmentStatus: 'Hired',
+    });
+    fixture.detectChanges();
+
+    expect(form.valid).toBe(true);
+    expect(submitButton().disabled).toBe(true);
+
+    form.markAsDirty();
+    fixture.detectChanges();
+
+    expect(submitButton().disabled).toBe(false);
+  });
 });
