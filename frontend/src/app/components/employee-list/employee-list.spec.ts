@@ -9,7 +9,7 @@ class MockEmployeeService {
   getAllEmployee() {
     return of([
       {
-        id: 1,
+        employeeId: 1,
         firstName: 'Alice',
         lastName: 'Smith',
         email: 'alice@example.com',
