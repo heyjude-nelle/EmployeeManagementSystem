@@ -136,7 +136,7 @@ cd frontend
 
 ## Running Tests
 
-**Backend** (from `backend/`):
+**Backend** (from `backend/EmployeeManagementSystem.Api.Tests/`):
 
 ```bash
 dotnet test
@@ -154,7 +154,12 @@ Runs Vitest specs covering the app shell, employee service, list component, and 
 
 ### Testing queries with the `.http` file
 
-A ready-to-use [`EmployeeManagementSystem.Api.http`](backend/EmployeeManagementSystem.Api/EmployeeManagementSystem.Api.http) file is included with sample requests for every endpoint (GET all, GET by id, POST, PUT, DELETE). With the API running, open it in Visual Studio or VS Code (with the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension) and click **Send Request** on any block to exercise the API without leaving your editor.
+A ready-to-use [`EmployeeManagementSystem.Api.http`](backend/EmployeeManagementSystem.Api/EmployeeManagementSystem.Api.http) file is included with sample requests for every endpoint (GET all, GET by id, POST, PUT, DELETE). With the API running, open the file in:
+
+- **Visual Studio 2022** (17.8+) — `.http` files are supported out of the box, no extension needed.
+- **VS Code** — install the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension by Huachao Mao (`humao.rest-client`).
+
+Then click **Send Request** above any request block to exercise the API without leaving your editor.
 
 ## Assumptions & Limitations
 
