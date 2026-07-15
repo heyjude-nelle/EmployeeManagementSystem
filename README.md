@@ -186,6 +186,18 @@ test: add frontend unit tests
 docs: add project readme
 ```
 
+## Design Decisions
+
+| Decision | Rationale |
+| -------- | --------- |
+| **Layered backend** — Controller → Service → EF Core, with DTOs | Controllers stay thin, business logic is testable in isolation, and EF entities are never exposed directly over the API. |
+| **Validation on both sides** | Reactive Forms validators give instant UX feedback; DataAnnotations on the DTOs are the authoritative server-side check. Both enforce the same rules (e.g. 100-char names). |
+| **Enums serialized as strings** | `JsonStringEnumConverter` with integer values rejected — self-documenting API payloads and no silently accepted invalid values. |
+| **Service layer in Angular** | Components never touch `HttpClient` directly — `EmployeeService` owns the API URLs and error handling. |
+| **No state-management store** | Components hold local state in signals and re-fetch on navigation; at this scale a store (e.g. NgRx) would add complexity without benefit. |
+| **UX guards** | Empty state distinguishes "no data" from "failed to load"; search is disabled when there is nothing to search; submit is disabled until the form is valid and changed. |
+| **Testing approach** | Backend services are tested against EF Core's In-Memory provider; frontend Vitest specs cover service calls, list rendering, and form validation through the DOM. |
+
 ## Assumptions & Limitations
 
 - **Database provider:** SQL Server LocalDB is assumed for local development (Windows-only). Any EF Core-compatible SQL Server instance works by updating the connection string — e.g. a SQL Server Docker container on macOS/Linux.
@@ -195,6 +207,5 @@ docs: add project readme
 - **Search** is a case-insensitive client-side filter on the full name, applied over the already-loaded list (suitable for the expected small dataset).
 - **Department is optional; EmploymentStatus defaults to `Hired`** for new employees.
 - **First and last names are assumed to be at most 100 characters.** This is enforced on both the client (`maxLength(100)`) and the server (`[StringLength(100)]`), though the form does not render a dedicated max-length error message.
-- **No state-management layer** — components call `EmployeeService` directly and hold their own state in local signals; data is re-fetched on each navigation rather than cached in a shared store (e.g. NgRx or a signal store). At this scale, a store would add complexity without benefit.
 - The API runs over plain **HTTP (5178)** in development to keep the frontend setup friction-free; an HTTPS profile (7186) is also available in `launchSettings.json`.
 - Focus is on clean structure and correctness over UI styling, per the challenge guidance.
