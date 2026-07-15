@@ -57,7 +57,7 @@
 
     <div class="form-actions">
       <a class="cancel-button" [routerLink]="['/employees']">Cancel</a>
-      <button class="save-button" type="submit" [disabled]="isSubmitting() || employeeForm.invalid">
+      <button class="save-button" type="submit" [disabled]="isSubmitting() || employeeForm.invalid || employeeForm.pristine">
         Submit
       </button>
     </div>
