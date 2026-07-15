@@ -162,6 +162,30 @@ A ready-to-use [`EmployeeManagementSystem.Api.http`](backend/EmployeeManagementS
 
 Then click **Send Request** above any request block to exercise the API without leaving your editor.
 
+## Git Conventions
+
+Work is done on short-lived branches and merged into `main` through pull requests.
+
+**Branch naming** — `type/short-description` in kebab-case:
+
+| Prefix      | Used for                                | Example                     |
+| ----------- | --------------------------------------- | --------------------------- |
+| `feat/`     | new functionality                        | `feat/employee-form`        |
+| `fix/`      | bug fixes                                | `fix/employee-id-field`     |
+| `test/`     | adding or updating tests                 | `test/frontend-unit-tests`  |
+| `docs/`     | documentation changes                    | `docs/readme`               |
+| `style/`    | visual or formatting tweaks              | `style/update-browser-tab`  |
+| `refactor/` | restructuring without behavior change    | `refactor/extract-types`    |
+
+**Commit messages** — [Conventional Commits](https://www.conventionalcommits.org/) style, lowercase, imperative mood: `type: short description`.
+
+```
+feat: add employee service
+fix: rename id to employeeid
+test: add frontend unit tests
+docs: add project readme
+```
+
 ## Assumptions & Limitations
 
 - **Database provider:** SQL Server LocalDB is assumed for local development (Windows-only). Any EF Core-compatible SQL Server instance works by updating the connection string — e.g. a SQL Server Docker container on macOS/Linux.
