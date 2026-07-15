@@ -43,7 +43,6 @@ describe('EmployeeForm', () => {
     const submitButton = (): HTMLButtonElement =>
       (fixture.nativeElement as HTMLElement).querySelector('.save-button')!;
 
-    // programmatic setValue leaves the form pristine, like a loaded employee
     form.setValue({
       firstName: 'Jane',
       lastName: 'Doe',
