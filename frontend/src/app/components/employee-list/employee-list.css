@@ -152,3 +152,33 @@ td.email-col {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.empty-state {
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e1e5ea;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.empty-state-image {
+  width: min(240px, 80%);
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.empty-state-title {
+  margin: 0;
+  color: #002961;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.empty-state-message {
+  margin: 8px 0 0;
+  color: #555555;
+  font-size: 14px;
+}
