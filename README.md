@@ -170,5 +170,6 @@ Then click **Send Request** above any request block to exercise the API without 
 - **Search** is a case-insensitive client-side filter on the full name, applied over the already-loaded list (suitable for the expected small dataset).
 - **Department is optional; EmploymentStatus defaults to `Hired`** for new employees.
 - **First and last names are assumed to be at most 100 characters.** This is enforced on both the client (`maxLength(100)`) and the server (`[StringLength(100)]`), though the form does not render a dedicated max-length error message.
+- **No state-management layer** — components call `EmployeeService` directly and hold their own state in local signals; data is re-fetched on each navigation rather than cached in a shared store (e.g. NgRx or a signal store). At this scale, a store would add complexity without benefit.
 - The API runs over plain **HTTP (5178)** in development to keep the frontend setup friction-free; an HTTPS profile (7186) is also available in `launchSettings.json`.
 - Focus is on clean structure and correctness over UI styling, per the challenge guidance.
