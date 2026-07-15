@@ -30,7 +30,7 @@ public class EmployeeServiceTests
 
         var result = await service.CreateAsync(dto);
 
-        Assert.True(result.Id > 0);
+        Assert.True(result.EmployeeId > 0);
         Assert.Equal("Jane", result.FirstName);
     }
 

@@ -31,7 +31,7 @@ public class EmployeesController(IEmployeeService employeeService) : ControllerB
     public async Task<ActionResult<EmployeeDto>> CreateEmployee(CreateEmployeeDto dto)
     {
         var employee = await _employeeService.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetEmployee), new { id = employee.Id }, employee);
+        return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
     }
 
     [HttpPut("{id}")]

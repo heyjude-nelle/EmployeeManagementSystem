@@ -24,7 +24,7 @@ describe('EmployeeService', () => {
   it('should retrieve employee list from the API', () => {
     const expectedEmployees: Employee[] = [
       {
-        id: 1,
+        employeeId: 1,
         firstName: 'Alice',
         lastName: 'Smith',
         email: 'alice@example.com',
