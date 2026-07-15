@@ -1,0 +1,19 @@
+<svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">No employee records</title>
+  <desc id="desc">An empty employee list illustration with a table and magnifying glass.</desc>
+  <rect width="320" height="240" rx="16" fill="#F7F9FC"/>
+  <ellipse cx="160" cy="198" rx="94" ry="12" fill="#E7ECF3"/>
+  <rect x="68" y="54" width="164" height="112" rx="10" fill="#FFFFFF" stroke="#CAD4E1" stroke-width="2"/>
+  <rect x="68" y="54" width="164" height="28" rx="10" fill="#EAF0F7"/>
+  <path d="M69 82H231" stroke="#CAD4E1" stroke-width="2"/>
+  <path d="M92 106H134" stroke="#D6DEE9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M92 132H154" stroke="#D6DEE9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M92 158H128" stroke="#D6DEE9" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="196" cy="132" r="35" fill="#FFFFFF" stroke="#002961" stroke-width="6"/>
+  <path d="M222 158L248 184" stroke="#002961" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="196" cy="126" r="10" fill="#F3A15D"/>
+  <path d="M174 151C178 139 187 134 196 134C205 134 214 139 218 151" stroke="#F3A15D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M112 68H128" stroke="#B7C4D3" stroke-width="5" stroke-linecap="round"/>
+  <path d="M144 68H160" stroke="#B7C4D3" stroke-width="5" stroke-linecap="round"/>
+  <path d="M176 68H192" stroke="#B7C4D3" stroke-width="5" stroke-linecap="round"/>
+</svg>

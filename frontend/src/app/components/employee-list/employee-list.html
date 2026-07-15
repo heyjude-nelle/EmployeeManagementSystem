@@ -9,6 +9,7 @@
           type="search"
           placeholder="Search by name"
           [value]="searchTerm()"
+          [disabled]="!employees().length"
           (input)="searchTerm.set($any($event.target).value)"
         />
       </div>
@@ -18,28 +19,41 @@
     </div>
   </header>
 
-  <div class="table-container">
-    <table class="employee-list-table">
-      <thead class="employee-table-header">
-        <tr>
-          @for (col of displayColumns; track $index) {
-            <th [class]="col.cssClass ?? ''" scope="col">{{ col.label }}</th>
-          }
-          <th class="actions-col" scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody class="employee-table-body">
-        @for (employee of filteredEmployees(); track employee.id) {
+  @if (filteredEmployees().length) {
+    <div class="table-container">
+      <table class="employee-list-table">
+        <thead class="employee-table-header">
           <tr>
             @for (col of displayColumns; track $index) {
-              <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
+              <th [class]="col.cssClass ?? ''" scope="col">{{ col.label }}</th>
             }
-            <td class="actions-col">
-              <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
-            </td>
+            <th class="actions-col" scope="col">Action</th>
           </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody class="employee-table-body">
+          @for (employee of filteredEmployees(); track employee.id) {
+            <tr>
+              @for (col of displayColumns; track $index) {
+                <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
+              }
+              <td class="actions-col">
+                <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <img class="empty-state-image" src="/empty-employees.svg" alt="No employee records found" />
+      @if (loadError()) {
+        <h2 class="empty-state-title">Unable to load employees</h2>
+        <p class="empty-state-message">Something went wrong while loading. Please try again later.</p>
+      } @else {
+        <h2 class="empty-state-title">No employees found</h2>
+        <p class="empty-state-message">Add an employee to start building your directory.</p>
+      }
+    </div>
+  }
 </main>

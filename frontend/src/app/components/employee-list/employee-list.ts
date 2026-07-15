@@ -23,6 +23,7 @@ export class EmployeeList implements OnInit {
 
   protected readonly employees = signal<Employee[]>([]);
   protected readonly searchTerm = signal('');
+  protected readonly loadError = signal(false);
 
   protected readonly displayColumns: EmployeeColumn[] = [
     {
@@ -52,9 +53,13 @@ export class EmployeeList implements OnInit {
 
   ngOnInit(): void {
     this.employeeService.getAllEmployee().subscribe({
-      next: (data) => this.employees.set(data),
-      error: (error) => {
-        throw error;
+      next: (data) => {
+        this.employees.set(data);
+        this.loadError.set(false);
+      },
+      error: () => {
+        this.employees.set([]);
+        this.loadError.set(true);
       },
     });
   }
