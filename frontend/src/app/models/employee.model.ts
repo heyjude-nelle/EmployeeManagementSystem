@@ -12,7 +12,7 @@ export type Department =
 export type EmploymentStatus = 'Hired' | 'Active' | 'Benched' | 'OnLeave' | 'Terminated';
 
 export interface Employee {
-  id: number;
+  employeeId: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -20,9 +20,9 @@ export interface Employee {
   employmentStatus: EmploymentStatus;
 }
 
-export type CreateEmployee = Omit<Employee, 'id'>;
+export type CreateEmployee = Omit<Employee, 'employeeId'>;
 
-export type UpdateEmployee = Omit<Employee, 'id'>;
+export type UpdateEmployee = Omit<Employee, 'employeeId'>;
 
 export type EmployeeColumn = {
   label: string;

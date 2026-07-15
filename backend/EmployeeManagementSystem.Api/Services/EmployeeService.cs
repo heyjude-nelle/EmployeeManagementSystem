@@ -22,7 +22,7 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
     {
         return new EmployeeDto
         {
-            Id = employee.Id,
+            EmployeeId = employee.EmployeeId,
             FirstName = employee.FirstName,
             LastName = employee.LastName,
             Email = employee.Email,

@@ -31,13 +31,13 @@
           </tr>
         </thead>
         <tbody class="employee-table-body">
-          @for (employee of filteredEmployees(); track employee.id) {
+          @for (employee of filteredEmployees(); track employee.employeeId) {
             <tr>
               @for (col of displayColumns; track $index) {
                 <td [class]="col.cssClass ?? ''">{{ col.value(employee) }}</td>
               }
               <td class="actions-col">
-                <a class="edit-button" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
+                <a class="edit-button" [routerLink]="['/employees', employee.employeeId, 'edit']">Edit</a>
               </td>
             </tr>
           }
