@@ -208,4 +208,3 @@ docs: add project readme
 - **Department is optional; EmploymentStatus defaults to `Hired`** for new employees.
 - **First and last names are assumed to be at most 100 characters.** This is enforced on both the client (`maxLength(100)`) and the server (`[StringLength(100)]`), though the form does not render a dedicated max-length error message.
 - The API runs over plain **HTTP (5178)** in development to keep the frontend setup friction-free; an HTTPS profile (7186) is also available in `launchSettings.json`.
-- Focus is on clean structure and correctness over UI styling, per the challenge guidance.
