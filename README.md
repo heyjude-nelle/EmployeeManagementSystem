@@ -65,7 +65,7 @@ The application is split into two independently runnable projects:
 ## Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- [Node.js](https://nodejs.org/) 20+ and npm
+- [Node.js](https://nodejs.org/) 22.22+ (or 24.15+) and npm
 - SQL Server LocalDB (bundled with Visual Studio, or via the [SQL Server Express](https://www.microsoft.com/sql-server/sql-server-downloads) installer)
 - EF Core CLI tools (for applying migrations):
   ```bash
@@ -158,7 +158,7 @@ A ready-to-use [`EmployeeManagementSystem.Api.http`](backend/EmployeeManagementS
 
 ## Assumptions & Limitations
 
-- **Database provider:** SQL Server LocalDB is assumed for local development. Any EF Core-compatible SQL Server instance works by updating the connection string.
+- **Database provider:** SQL Server LocalDB is assumed for local development (Windows-only). Any EF Core-compatible SQL Server instance works by updating the connection string — e.g. a SQL Server Docker container on macOS/Linux.
 - **Migrations are not applied automatically** on startup — run `dotnet ef database update` before first launch.
 - **No authentication/authorization** — all endpoints are open, as it is out of scope for this challenge.
 - **No seed data** — the database starts empty; add employees via the UI, Swagger, or the `.http` file.
