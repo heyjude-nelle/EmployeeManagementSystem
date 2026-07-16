@@ -38,7 +38,7 @@ describe('EmployeeForm', () => {
     expect(component['hasFieldError']('email', 'required')).toBe(true);
   });
 
-  it('should keep submit disabled until the form has unsaved changes', () => {
+  it('should disable submit while the form is pristine and enable it once edited', () => {
     const form = component['employeeForm'];
     const submitButton = (): HTMLButtonElement =>
       (fixture.nativeElement as HTMLElement).querySelector('.save-button')!;
