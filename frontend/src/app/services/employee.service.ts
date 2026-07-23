@@ -26,6 +26,10 @@ export class EmployeeService {
   }
  
   private handleHttpError(error: HttpErrorResponse) {
+    if (error.status === 409) {
+      return throwError(() => new Error('DUPLICATE_EMAIL'));
+    }
+
     console.error('EmployeeService HTTP error', error);
     return throwError(() => error);
   }

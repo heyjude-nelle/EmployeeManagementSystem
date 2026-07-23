@@ -10,7 +10,6 @@ import {
   EmploymentStatus,
 } from '../../models/employee.model';
 import { DEPARTMENTS, EMPLOYMENT_STATUSES } from '../../models/employee-constants';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-form',
@@ -97,8 +96,11 @@ export class EmployeeForm implements OnInit {
     if (this.isEditMode() && this.employeeId) {
       this.employeeService.updateEmployee(this.employeeId, employee).subscribe({
         next: () => this.router.navigate(['/employees']),
-        error: (error) => {
+        error: (error: Error) => {
           this.isSubmitting.set(false);
+          if (error.message === 'DUPLICATE_EMAIL') {
+            this.employeeForm.controls.email.setErrors({ duplicate: true });
+          }
           throw error;
         },
       });
@@ -107,9 +109,9 @@ export class EmployeeForm implements OnInit {
 
     this.employeeService.createEmployee(employee).subscribe({
       next: () => this.router.navigate(['/employees']),
-      error: (error: HttpErrorResponse) => {
+      error: (error: Error) => {
         this.isSubmitting.set(false);
-        if (error.status === 409) {
+        if (error.message === 'DUPLICATE_EMAIL') {
           this.employeeForm.controls.email.setErrors({ duplicate: true });
         }
         throw error;
