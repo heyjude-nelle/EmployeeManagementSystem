@@ -10,6 +10,7 @@ import {
   EmploymentStatus,
 } from '../../models/employee.model';
 import { DEPARTMENTS, EMPLOYMENT_STATUSES } from '../../models/employee-constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-form',
@@ -106,8 +107,11 @@ export class EmployeeForm implements OnInit {
 
     this.employeeService.createEmployee(employee).subscribe({
       next: () => this.router.navigate(['/employees']),
-      error: (error) => {
+      error: (error: HttpErrorResponse) => {
         this.isSubmitting.set(false);
+        if (error.status === 409) {
+          this.employeeForm.controls.email.setErrors({ duplicate: true });
+        }
         throw error;
       },
     });
