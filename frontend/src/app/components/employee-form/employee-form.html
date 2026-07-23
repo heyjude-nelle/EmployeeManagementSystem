@@ -32,6 +32,9 @@
       @if (hasFieldError('email', 'email')) {
         <p class="field-error">Enter a valid email address.</p>
       }
+      @if (hasFieldError('email', 'duplicate')) {
+        <p class="field-error">An employee with this email already exists.</p>
+      }
     </div>
 
     <div class="form-row">

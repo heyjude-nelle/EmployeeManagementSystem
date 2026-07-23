@@ -96,8 +96,11 @@ export class EmployeeForm implements OnInit {
     if (this.isEditMode() && this.employeeId) {
       this.employeeService.updateEmployee(this.employeeId, employee).subscribe({
         next: () => this.router.navigate(['/employees']),
-        error: (error) => {
+        error: (error: Error) => {
           this.isSubmitting.set(false);
+          if (error.message === 'DUPLICATE_EMAIL') {
+            this.employeeForm.controls.email.setErrors({ duplicate: true });
+          }
           throw error;
         },
       });
@@ -106,8 +109,11 @@ export class EmployeeForm implements OnInit {
 
     this.employeeService.createEmployee(employee).subscribe({
       next: () => this.router.navigate(['/employees']),
-      error: (error) => {
+      error: (error: Error) => {
         this.isSubmitting.set(false);
+        if (error.message === 'DUPLICATE_EMAIL') {
+          this.employeeForm.controls.email.setErrors({ duplicate: true });
+        }
         throw error;
       },
     });
