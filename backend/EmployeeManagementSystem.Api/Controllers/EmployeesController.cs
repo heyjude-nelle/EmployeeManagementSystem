@@ -46,12 +46,19 @@ public class EmployeesController(IEmployeeService employeeService) : ControllerB
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateEmployee(int id, UpdateEmployeeDto dto)
     {
-        var success = await _employeeService.UpdateAsync(id, dto);
-        if (!success)
+        try
         {
-            return NotFound();
+            var success = await _employeeService.UpdateAsync(id, dto);
+            if (!success)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
-        return NoContent();
+        catch (DuplicateEmailException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 
     [HttpDelete("{id}")]

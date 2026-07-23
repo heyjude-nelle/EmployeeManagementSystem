@@ -76,6 +76,13 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
             return false;
         }
 
+        var emailTaken = await _context.Employees.AnyAsync(e => e.EmployeeId != id && e.Email.ToLower() == dto.Email.ToLower());
+
+        if (emailTaken)
+        {
+            throw new DuplicateEmailException(dto.Email);
+        }
+
         existingEmployee.FirstName = dto.FirstName;
         existingEmployee.LastName = dto.LastName;
         existingEmployee.Email = dto.Email;
