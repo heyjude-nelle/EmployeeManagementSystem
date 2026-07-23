@@ -2,6 +2,7 @@ using EmployeeManagementSystem.Api.Data;
 using EmployeeManagementSystem.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Api.Dtos;
+using EmployeeManagementSystem.Api.Exceptions;
 
 namespace EmployeeManagementSystem.Api.Services;
 
@@ -45,6 +46,13 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
 
     public async Task<EmployeeDto> CreateAsync(CreateEmployeeDto dto)
     {
+        var emailTaken = await _context.Employees.AnyAsync(e => e.Email.ToLower() == dto.Email.ToLower());
+
+        if (emailTaken)
+        {
+            throw new DuplicateEmailException(dto.Email);
+        }
+
         var employee = new Employee
         {
             FirstName = dto.FirstName,

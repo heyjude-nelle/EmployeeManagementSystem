@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManagementSystem.Api.Services;
 using EmployeeManagementSystem.Api.Dtos;
+using EmployeeManagementSystem.Api.Exceptions;
 
 namespace EmployeeManagementSystem.Api.Controllers;
 
@@ -30,8 +31,16 @@ public class EmployeesController(IEmployeeService employeeService) : ControllerB
     [HttpPost]
     public async Task<ActionResult<EmployeeDto>> CreateEmployee(CreateEmployeeDto dto)
     {
-        var employee = await _employeeService.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
+        try
+        {
+
+            var employee = await _employeeService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
+        }
+        catch (DuplicateEmailException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 
     [HttpPut("{id}")]
