@@ -2,6 +2,11 @@
 
 A simple full-stack Employee Management System built with **Angular** and **ASP.NET Core Web API**. It lets you list, search, create, and edit employees through a REST API backed by SQL Server and a standalone-component Angular frontend.
 
+<img width="1012" height="382" alt="Screenshot 2026-07-16 000810" src="https://github.com/user-attachments/assets/cb4e95a8-0b29-4ec4-8d70-3b087e61e7e0" />
+<img width="1011" height="364" alt="Screenshot 2026-07-16 000818" src="https://github.com/user-attachments/assets/956709ba-fa02-4762-a381-d428eae0b21d" />
+<img width="1011" height="350" alt="Screenshot 2026-07-16 001011" src="https://github.com/user-attachments/assets/41ae102d-d1b9-4850-92fe-3adf0f467e41" />
+
+
 ## Project Overview
 
 The application is split into two independently runnable projects:
