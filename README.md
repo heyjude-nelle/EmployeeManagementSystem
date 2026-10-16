@@ -213,3 +213,13 @@ docs: add project readme
 - **Department is optional; EmploymentStatus defaults to `Hired`** for new employees.
 - **First and last names are assumed to be at most 100 characters.** This is enforced on both the client (`maxLength(100)`) and the server (`[StringLength(100)]`), though the form does not render a dedicated max-length error message.
 - The API runs over plain **HTTP (5178)** in development to keep the frontend setup friction-free; an HTTPS profile (7186) is also available in `launchSettings.json`.
+
+## What I'd Add Next
+
+- **Pagination & server-side sorting** — the employee list currently loads everything and filters client-side; fine for a small dataset, but wouldn't scale.
+- **Unique constraint on `Email` at the database level** — duplicate checking is currently enforced only in the service layer, which has a race condition under concurrent requests. A unique index plus a `DbUpdateException` catch would close that gap.
+- **Authentication & role-based access** — e.g. read-only viewers vs. admins who can create/edit, since every endpoint is currently open.
+- **Soft delete / audit trail** — track who changed what and when, instead of hard deletes.
+- **Containerized deployment** — a `Dockerfile` + `docker-compose` for the API and a SQL Server container, so the app doesn't depend on Windows-only LocalDB.
+- **CI pipeline** — run `dotnet test` and `npm test` on every PR (e.g. GitHub Actions) instead of relying on local runs.
+- **Seed data / automatic migrations on startup** for easier onboarding and demos.
