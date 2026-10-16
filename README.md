@@ -1,6 +1,6 @@
 # Employee Management System
 
-A simple full-stack Employee Management System built with **Angular** and **ASP.NET Core Web API**. It lets you list, search, create, and edit employees through a REST API backed by SQL Server and a standalone-component Angular frontend.
+A lightweight internal tool for an HR or office admin to keep a company’s employee roster up to date — list who’s on staff, search by name, and add or edit records — without needing database access.
 
 <img width="1012" height="382" alt="Screenshot 2026-07-16 000810" src="https://github.com/user-attachments/assets/cb4e95a8-0b29-4ec4-8d70-3b087e61e7e0" />
 <img width="1011" height="364" alt="Screenshot 2026-07-16 000818" src="https://github.com/user-attachments/assets/956709ba-fa02-4762-a381-d428eae0b21d" />
