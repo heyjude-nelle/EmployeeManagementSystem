@@ -207,7 +207,7 @@ docs: add project readme
 
 - **Database provider:** SQL Server LocalDB is assumed for local development (Windows-only). Any EF Core-compatible SQL Server instance works by updating the connection string — e.g. a SQL Server Docker container on macOS/Linux.
 - **Migrations are not applied automatically** on startup — run `dotnet ef database update` before first launch.
-- **No authentication/authorization** — all endpoints are open, as it is out of scope for this challenge.
+- **No authentication/authorization** — all endpoints are open, as it is out of scope for this project.
 - **No seed data** — the database starts empty; add employees via the UI, Swagger, or the `.http` file.
 - **Search** is a case-insensitive client-side filter on the full name, applied over the already-loaded list (suitable for the expected small dataset).
 - **Department is optional; EmploymentStatus defaults to `Hired`** for new employees.
